@@ -11,4 +11,4 @@ if (len(sys.argv) == 1):
 else:
     carpeta = sys.argv[1]   
 
-renombrar_imagenes(carpeta)
+renombrar_imagenes.renombrar_imagenes(carpeta)
