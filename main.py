@@ -28,7 +28,7 @@ def main(page: ft.Page):
         ft.Row(
             [
                 ft.ElevatedButton(
-                    "Seleccionar archivos",
+                    "Seleccionar carpeta",
                     icon=ft.icons.UPLOAD_FILE,
                     on_click=lambda _: pick_files_dialog.get_directory_path(),
                 ),
