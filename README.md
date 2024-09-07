@@ -1,3 +1,9 @@
+# Renombrar imágenes
+
+Este proyecto es un programa para renombrar imágenes hecho con Python. Se puede utilizar importando la función, por medio de la línea de comandos o con la interfaz gráfica
+
+## Mejoras
+
 - [X] Cambiar el texto "Seleccionar archivos" por "Seleccionar carpeta"
 - [X] deshabilitar el botón de "Renombrar" cuando no se ha seleccionado ninguna carpeta
 - [ ] Mostrar un mensaje de éxito cuando ya se renombraron las imágenes
