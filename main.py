@@ -8,8 +8,23 @@ def main(page: ft.Page):
         title=ft.Text("Listo, imágenes renombradas en: " + carpeta_seleccionada.value))
         page.open(dlg)
     
+    def handle_close(e):
+        page.close(dlg_modal)
+        
+    dlg_modal = ft.AlertDialog(
+        modal=True,
+        title=ft.Text("Por favor confirmar"),
+        content=ft.Text("¿Quieres renombrar todas las imágenes?"),
+        actions=[
+            ft.TextButton("Sí", on_click=renombrar),
+            ft.TextButton("No", on_click=handle_close),
+        ],
+        actions_alignment=ft.MainAxisAlignment.END,
+        )
+
+
     boton_carpeta = ft.ElevatedButton("Seleccionar carpeta",icon=ft.icons.FOLDER,on_click=lambda _: pick_files_dialog.get_directory_path())
-    boton_renombrar = ft.ElevatedButton("Renombrar", on_click=renombrar, icon=ft.icons.DRIVE_FILE_RENAME_OUTLINE, disabled=True)
+    boton_renombrar = ft.ElevatedButton("Renombrar", on_click=lambda e: page.open(dlg_modal), icon=ft.icons.DRIVE_FILE_RENAME_OUTLINE, disabled=True)
 
     def pick_files_result(e: ft.FilePickerResultEvent):
         # se actualiza el texto del cuadro de texto

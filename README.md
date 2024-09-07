@@ -7,6 +7,6 @@ Este proyecto es un programa para renombrar imágenes hecho con Python. Se puede
 - [x] Cambiar el texto "Seleccionar archivos" por "Seleccionar carpeta"
 - [x] deshabilitar el botón de "Renombrar" cuando no se ha seleccionado ninguna carpeta
 - [x] Mostrar un mensaje de éxito cuando ya se renombraron las imágenes
-- [ ] Mostrar un mensaje para la confirmación de renombrado de imágenes
+- [x] Mostrar un mensaje para la confirmación de renombrado de imágenes
 - [ ] mejorar la UI en cuanto al diseño
 - [ ] en la UI se agreguen checkboxes para seleccionar los tipos de imágenes para los que se quiere aplicar el renombrado
