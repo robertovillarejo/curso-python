@@ -3,9 +3,10 @@ import renombrar_imagenes
 
 def main(page: ft.Page):
     def renombrar(x: ft.ControlEvent):
-        print("Renombrando imágenes en: " + carpeta_seleccionada.value)
         renombrar_imagenes.renombrar_imagenes(carpeta_seleccionada.value)
-        print("Listo, imágenes renombradas en: " + carpeta_seleccionada.value)
+        dlg = ft.AlertDialog(
+        title=ft.Text("Listo, imágenes renombradas en: " + carpeta_seleccionada.value))
+        page.open(dlg)
     
     boton_carpeta = ft.ElevatedButton("Seleccionar carpeta",icon=ft.icons.FOLDER,on_click=lambda _: pick_files_dialog.get_directory_path())
     boton_renombrar = ft.ElevatedButton("Renombrar", on_click=renombrar, icon=ft.icons.DRIVE_FILE_RENAME_OUTLINE, disabled=True)
@@ -37,7 +38,7 @@ def main(page: ft.Page):
     c = ft.Row(controls=[
            boton_carpeta,
            carpeta_seleccionada,
-           boton_renombrar
+           boton_renombrar,
         ])
     page.add(c)
 """"
