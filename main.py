@@ -3,7 +3,7 @@ import renombrar_imagenes
 
 def main(page: ft.Page):
     def renombrar(x: ft.ControlEvent):
-        renombrar_imagenes.renombrar_imagenes(carpeta_seleccionada.value)
+        renombrar_imagenes.renombrar_imagenes(carpeta_seleccionada.value, jpg=ch_jpg.value, png=ch_png.value, gif=ch_gif.value, bmp=ch_bmp.value)
         dlg = ft.AlertDialog(
         title=ft.Text("Listo, imágenes renombradas en: " + carpeta_seleccionada.value))
         page.open(dlg)
@@ -21,7 +21,12 @@ def main(page: ft.Page):
         ],
         actions_alignment=ft.MainAxisAlignment.END,
         )
-
+    
+    #Checkboxes
+    ch_jpg=ft.Checkbox(label=".jpg", value=True)
+    ch_png=ft.Checkbox(label=".png", value=False)
+    ch_gif=ft.Checkbox(label=".gif", value=False)
+    ch_bmp=ft.Checkbox(label=".bmp", value=False)
 
     boton_carpeta = ft.ElevatedButton("Seleccionar carpeta",icon=ft.icons.FOLDER,on_click=lambda _: pick_files_dialog.get_directory_path())
     boton_renombrar = ft.ElevatedButton("Renombrar", on_click=lambda e: page.open(dlg_modal), icon=ft.icons.DRIVE_FILE_RENAME_OUTLINE, disabled=True)
@@ -45,30 +50,20 @@ def main(page: ft.Page):
     carpeta_seleccionada = ft.Text()
 
     page.overlay.append(pick_files_dialog)
-    
-    
-    
-    
-       
+     
     c = ft.Row(controls=[
            boton_carpeta,
            carpeta_seleccionada,
            boton_renombrar,
         ])
-    page.add(c)
-""""
-        page.add(
-        ft.Row(
-            [
-                ft.ElevatedButton(
-                    "Seleccionar carpeta",
-                    icon=ft.icons.UPLOAD_FILE,
-                    on_click=lambda _: pick_files_dialog.get_directory_path(),
-                ),
-                carpeta_seleccionada,
-                ft.FilledButton("Renombrar", icon=ft.icons.PLAY_CIRCLE_FILL, on_click=renombrar),
-            ]
+    
+    page.add(
+        c,
+        ft.Container(height=20),
+        ch_jpg,
+        ch_png,
+        ch_gif,
+        ch_bmp,
         )
-    )
-"""
+
 ft.app(main)
