@@ -2,6 +2,9 @@ import flet as ft
 import renombrar_imagenes
 
 def main(page: ft.Page):
+    page.title = "Renombrado de imágenes"
+    page.padding = 50
+
     def renombrar(x: ft.ControlEvent):
         renombrar_imagenes.renombrar_imagenes(carpeta_seleccionada.value, jpg=ch_jpg.value, png=ch_png.value, gif=ch_gif.value, bmp=ch_bmp.value)
         dlg = ft.AlertDialog(
@@ -50,20 +53,44 @@ def main(page: ft.Page):
     carpeta_seleccionada = ft.Text()
 
     page.overlay.append(pick_files_dialog)
-     
-    c = ft.Row(controls=[
-           boton_carpeta,
-           carpeta_seleccionada,
-           boton_renombrar,
-        ])
     
     page.add(
-        c,
-        ft.Container(height=20),
-        ch_jpg,
-        ch_png,
-        ch_gif,
-        ch_bmp,
+        # header
+        ft.ResponsiveRow(
+            controls=[
+                ft.Text("Instrucciones:", text_align=ft.TextAlign.START), 
+                ft.Text("Seleccione una carpeta para renombrar las imágenes de los tipos seleccionados con el nombre de la carpeta", width=300)
+                ],
+            alignment=ft.MainAxisAlignment.CENTER
+        ),
+        # main
+        ft.ResponsiveRow(
+            controls=[
+                # seleccionar carpeta
+                ft.ResponsiveRow(controls=
+                    [
+                    boton_carpeta,
+                    carpeta_seleccionada
+                ]),
+                ft.ResponsiveRow(controls = [
+                    ch_jpg,
+                    ch_png,
+                    ch_gif,
+                    ch_bmp,
+                ]),
+                ft.ResponsiveRow(controls = [
+                    boton_renombrar
+                ])
+        ],
+        alignment=ft.MainAxisAlignment.CENTER
+        ),
+        # footer
+        ft.ResponsiveRow(
+            controls=[
+                ft.Text("Hecho por Marco Antonio y Roberto Villarejo", text_align=ft.TextAlign.CENTER)
+            ],
+            alignment=ft.MainAxisAlignment.CENTER
+        )
         )
 
 ft.app(main)
